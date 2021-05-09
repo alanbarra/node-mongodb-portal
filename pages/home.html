@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <%- include("partials/head.html") %>
+
+  <body>
+    <div class="container py-3">
+      <%- include('partials/header.html') %>
+
+      <main>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+          <img
+            class="img-fluid rounded img-thumbnail"
+            src="<%= posts[0].imagem %>"
+          />
+          <a href="<%= posts[0].slug %>"
+            ><h4><b><%= posts[0].titulo %></b></h4></a
+          >
+          <p class="fs-5 text-muted">
+            <%- posts[0].conteudo.substr(0,150) %>...
+          </p>
+        </div>
+
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+          <h2 class="display-4 fw-normal">Últimas publicações</h2>
+          <p class="fs-5 text-muted">
+            Quickly build an effective pricing table for your potential
+            customers with this Bootstrap example. It’s built with default
+            Bootstrap components and utilities with little customization.
+          </p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <% for(let i = 1; i < posts.length; i++) { %>
+
+            <div class="col">
+              <div class="card" style="width: 18rem">
+                <img
+                  src="<%= posts[i].imagem %>"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title"><%= posts[i].titulo %></h5>
+                  <p class="card-text">
+                    <%- posts[0].conteudo.substr(0,150) %>...
+                  </p>
+                  <a href="<%= posts[i].slug %>" class="btn btn-success">Saiba mais</a>
+                </div>
+              </div>
+            </div>
+
+          <% } %>
+
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div
+                class="card-header py-3 text-white bg-primary border-primary"
+              >
+                <h4 class="my-0 fw-normal">Mais Lidas</h4>
+              </div>
+              <div class="card-body">
+
+                <% for(let i = 0; i < posts.length; i++) { %>
+
+                  <h6><b><%= posts[i].categoria %></b></h6>
+                  <div class="d-flex text-muted pt-3">
+                    
+                    <p class="pb-3 mb-0 small lh-sm border-bottom">
+                      
+                      <a href="<%= posts[i].slug %>" class="alert-link">
+                        <%- posts[0].conteudo.substr(0,150) %>...
+                      </a>
+                    </p>
+                  </div>
+
+                <% } %>
+
+                <button type="button" class="w-100 btn btn-lg btn-primary">
+                  Contact us
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <%- include('partials/footer.html') %>
+    </div>
+  </body>
+</html>
